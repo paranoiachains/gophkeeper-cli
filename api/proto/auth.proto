@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "github.com/paranoiachains/gophkeeper/gen/pb/auth";
+
+service Auth {
+    rpc GetUser(GetUserRequest) returns (GetUserResponse);
+    rpc DeviceAuthorize(DeviceAuthorizeRequest) returns (DeviceAuthorizeResponse);
+    rpc ActivateDevice(ActivateDeviceRequest) returns (ActivateDeviceResponse);
+    rpc PollToken(PollTokenRequest) returns (PollTokenResponse);
+}
+
+message User {
+    string id = 1;
+    string login = 2;
+    string password = 3;
+}
+
+  message GetUserRequest {
+    string login = 1;
+}   
+
+message GetUserResponse {
+    User user = 1;
+}
+  
+message DeviceAuthorizeRequest {
+    string login = 1;
+    string password = 2;
+}
+  
+  message DeviceAuthorizeResponse {
+    string device_code = 1;
+    string user_code = 2;
+    int64 expires_in = 3;
+}
+  
+message ActivateDeviceRequest {
+    string user_code = 1;
+}
+  
+message ActivateDeviceResponse {
+
+}
+  
+message PollTokenRequest {
+    string device_code = 1;
+}
+  
+message PollTokenResponse {
+    string token = 1;
+}

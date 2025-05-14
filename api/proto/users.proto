@@ -2,28 +2,20 @@ syntax = "proto3";
 
 package gen.pb;
 
-option go_package = "github.com/paranoiachains/gophkeeper/gen/pb";
+option go_package = "github.com/paranoiachains/gophkeeper/gen/pb/users";
 
 service Users {
-    rpc RegisterUser(RegisterUserRequest) returns (RegisterUserResponse);
+    rpc Register(RegisterRequest) returns (RegisterResponse);
     rpc Login(LoginRequest) returns (LoginResponse);
-    rpc GetUser(GetUserRequest) returns (GetUserResponse);
 }
 
-message User {
-    string id = 1;
-    string login = 2;
-    string password = 3;
-}
-
-message RegisterUserRequest {
+message RegisterRequest {
     string login = 1;
     string password = 2;
 }
 
-message RegisterUserResponse {
+message RegisterResponse {
     string token = 1;
-    string error = 2;
 }
 
 message LoginRequest {
@@ -33,15 +25,4 @@ message LoginRequest {
 
 message LoginResponse {
     string token = 2;
-    string error = 1;
-}
-
-
-message GetUserRequest {
-    string login = 1;
-}   
-
-message GetUserResponse {
-    User user = 1;
-    string error = 2;
 }
