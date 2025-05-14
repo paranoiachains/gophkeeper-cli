@@ -1,4 +1,4 @@
-module github.com/paranoiachains/gophkeeper
+module github.com/paranoiachains/gophkeeper-cli
 
 go 1.24.0
 
