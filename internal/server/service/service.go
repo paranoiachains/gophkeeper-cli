@@ -1,15 +1,23 @@
 package service
 
-// service layer, which is used by gRPC layer
-// uses storage interface
-// definition of storage interface
+import (
+	"context"
 
-/**
-type Server struct {
-	storage Storage
+	"github.com/paranoiachains/gophkeeper-cli/internal/models"
+)
+
+// Implementations of Users interface
+type Users struct {
+	db UserStorage
 }
 
-type Storage interface {
-	...Storage methods
+// Users DB layer
+type UserStorage interface {
+	GetUser(ctx context.Context, login string) (*models.User, error)
+
+	// Returns user ID for token building
+	Login(ctx context.Context, login string, password string) (string, error)
+
+	// Also returns user ID for token building
+	RegisterUser(ctx context.Context, login string, password string) (string, error)
 }
-**/

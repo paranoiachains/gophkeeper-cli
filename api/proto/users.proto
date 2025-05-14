@@ -43,4 +43,5 @@ message GetUserRequest {
 
 message GetUserResponse {
     User user = 1;
+    string error = 2;
 }
