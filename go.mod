@@ -3,6 +3,7 @@ module github.com/paranoiachains/gophkeeper-cli
 go 1.24.0
 
 require (
+	github.com/google/uuid v1.6.0
 	github.com/spf13/cobra v1.9.1
 	google.golang.org/grpc v1.72.1
 	google.golang.org/protobuf v1.36.5
