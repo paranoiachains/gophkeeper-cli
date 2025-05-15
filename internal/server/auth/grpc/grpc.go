@@ -17,8 +17,7 @@ type authServerAPI struct {
 
 type Auth interface {
 	GetUser(ctx context.Context, login string) (*models.User, error)
-	DeviceAuthorize(ctx context.Context, login, password string) (deviceCode, userCode string, expiresIn int64, err error)
-	ActivateDevice(ctx context.Context, userCode string) error
+	DeviceAuthorize(ctx context.Context, login string) (deviceCode, userCode string, expiresIn int64, err error)
 	PollToken(ctx context.Context, deviceCode string) (token string, err error)
 }
 
@@ -40,7 +39,7 @@ func (a *authServerAPI) GetUser(ctx context.Context, req *auth.GetUserRequest) (
 }
 
 func (a *authServerAPI) DeviceAuthorize(ctx context.Context, req *auth.DeviceAuthorizeRequest) (*auth.DeviceAuthorizeResponse, error) {
-	deviceCode, userCode, expiresIn, err := a.auth.DeviceAuthorize(ctx, req.Login, req.Password)
+	deviceCode, userCode, expiresIn, err := a.auth.DeviceAuthorize(ctx, req.Login)
 	if err != nil {
 		return nil, status.Error(codes.Internal, "failed to authorize device")
 	}
@@ -50,13 +49,6 @@ func (a *authServerAPI) DeviceAuthorize(ctx context.Context, req *auth.DeviceAut
 		UserCode:   userCode,
 		ExpiresIn:  expiresIn,
 	}, nil
-}
-
-func (a *authServerAPI) ActivateDevice(ctx context.Context, req *auth.ActivateDeviceRequest) (*auth.ActivateDeviceResponse, error) {
-	if err := a.auth.ActivateDevice(ctx, req.UserCode); err != nil {
-		return nil, status.Error(codes.Internal, "failed to activate device")
-	}
-	return &auth.ActivateDeviceResponse{}, nil
 }
 
 func (a *authServerAPI) PollToken(ctx context.Context, req *auth.PollTokenRequest) (*auth.PollTokenResponse, error) {
