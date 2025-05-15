@@ -37,16 +37,11 @@ func (a *AuthService) GetUser(ctx context.Context, login string) (*models.User, 
 }
 
 // DeviceAuthorize returns device code for further token polling, user code to provide to user, expiration date in seconds
-func (a *AuthService) DeviceAuthorize(ctx context.Context, login, password string) (string, string, int64, error) {
-	user, err := a.db.NewUser(ctx, login, password)
-	if err != nil {
-		return "", "", 0, fmt.Errorf("failed to create user: %w", err)
-	}
-
+func (a *AuthService) DeviceAuthorize(ctx context.Context, login string) (string, string, int64, error) {
 	deviceCode := generateRandomCode()
 	userCode := generateRandomCode()
 
-	err = a.device.SaveDeviceCode(ctx, deviceCode, userCode, user.Login, a.cfg.DeviceCodeTTL)
+	err := a.device.SaveDeviceCode(ctx, deviceCode, userCode, login, a.cfg.DeviceCodeTTL)
 	if err != nil {
 		return "", "", 0, fmt.Errorf("failed to save device code: %w", err)
 	}
