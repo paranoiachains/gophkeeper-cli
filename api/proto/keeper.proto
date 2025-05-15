@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package gen.pb;
 
-option go_package = "github.com/paranoiachains/gophkeeper/gen/pb/users";
+option go_package = "github.com/paranoiachains/gophkeeper/gen/pb/keeper";
 
-service Users {
+service Keeper {
     rpc Register(RegisterRequest) returns (RegisterResponse);
     rpc Login(LoginRequest) returns (LoginResponse);
 }

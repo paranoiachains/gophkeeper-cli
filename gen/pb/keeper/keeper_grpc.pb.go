@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v6.30.2
-// source: api/proto/users.proto
+// source: api/proto/keeper.proto
 
-package users
+package keeper
 
 import (
 	context "context"
@@ -19,141 +19,141 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Users_Register_FullMethodName = "/gen.pb.Users/Register"
-	Users_Login_FullMethodName    = "/gen.pb.Users/Login"
+	Keeper_Register_FullMethodName = "/gen.pb.Keeper/Register"
+	Keeper_Login_FullMethodName    = "/gen.pb.Keeper/Login"
 )
 
-// UsersClient is the client API for Users service.
+// KeeperClient is the client API for Keeper service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type UsersClient interface {
+type KeeperClient interface {
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 }
 
-type usersClient struct {
+type keeperClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewUsersClient(cc grpc.ClientConnInterface) UsersClient {
-	return &usersClient{cc}
+func NewKeeperClient(cc grpc.ClientConnInterface) KeeperClient {
+	return &keeperClient{cc}
 }
 
-func (c *usersClient) Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error) {
+func (c *keeperClient) Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(RegisterResponse)
-	err := c.cc.Invoke(ctx, Users_Register_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, Keeper_Register_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *usersClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
+func (c *keeperClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(LoginResponse)
-	err := c.cc.Invoke(ctx, Users_Login_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, Keeper_Login_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// UsersServer is the server API for Users service.
-// All implementations must embed UnimplementedUsersServer
+// KeeperServer is the server API for Keeper service.
+// All implementations must embed UnimplementedKeeperServer
 // for forward compatibility.
-type UsersServer interface {
+type KeeperServer interface {
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
-	mustEmbedUnimplementedUsersServer()
+	mustEmbedUnimplementedKeeperServer()
 }
 
-// UnimplementedUsersServer must be embedded to have
+// UnimplementedKeeperServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedUsersServer struct{}
+type UnimplementedKeeperServer struct{}
 
-func (UnimplementedUsersServer) Register(context.Context, *RegisterRequest) (*RegisterResponse, error) {
+func (UnimplementedKeeperServer) Register(context.Context, *RegisterRequest) (*RegisterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Register not implemented")
 }
-func (UnimplementedUsersServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
+func (UnimplementedKeeperServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
-func (UnimplementedUsersServer) mustEmbedUnimplementedUsersServer() {}
-func (UnimplementedUsersServer) testEmbeddedByValue()               {}
+func (UnimplementedKeeperServer) mustEmbedUnimplementedKeeperServer() {}
+func (UnimplementedKeeperServer) testEmbeddedByValue()                {}
 
-// UnsafeUsersServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to UsersServer will
+// UnsafeKeeperServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to KeeperServer will
 // result in compilation errors.
-type UnsafeUsersServer interface {
-	mustEmbedUnimplementedUsersServer()
+type UnsafeKeeperServer interface {
+	mustEmbedUnimplementedKeeperServer()
 }
 
-func RegisterUsersServer(s grpc.ServiceRegistrar, srv UsersServer) {
-	// If the following call pancis, it indicates UnimplementedUsersServer was
+func RegisterKeeperServer(s grpc.ServiceRegistrar, srv KeeperServer) {
+	// If the following call pancis, it indicates UnimplementedKeeperServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&Users_ServiceDesc, srv)
+	s.RegisterService(&Keeper_ServiceDesc, srv)
 }
 
-func _Users_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Keeper_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RegisterRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UsersServer).Register(ctx, in)
+		return srv.(KeeperServer).Register(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Users_Register_FullMethodName,
+		FullMethod: Keeper_Register_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsersServer).Register(ctx, req.(*RegisterRequest))
+		return srv.(KeeperServer).Register(ctx, req.(*RegisterRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Users_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Keeper_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(LoginRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UsersServer).Login(ctx, in)
+		return srv.(KeeperServer).Login(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Users_Login_FullMethodName,
+		FullMethod: Keeper_Login_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsersServer).Login(ctx, req.(*LoginRequest))
+		return srv.(KeeperServer).Login(ctx, req.(*LoginRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// Users_ServiceDesc is the grpc.ServiceDesc for Users service.
+// Keeper_ServiceDesc is the grpc.ServiceDesc for Keeper service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var Users_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "gen.pb.Users",
-	HandlerType: (*UsersServer)(nil),
+var Keeper_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "gen.pb.Keeper",
+	HandlerType: (*KeeperServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Register",
-			Handler:    _Users_Register_Handler,
+			Handler:    _Keeper_Register_Handler,
 		},
 		{
 			MethodName: "Login",
-			Handler:    _Users_Login_Handler,
+			Handler:    _Keeper_Login_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "api/proto/users.proto",
+	Metadata: "api/proto/keeper.proto",
 }

@@ -21,7 +21,6 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	Auth_GetUser_FullMethodName         = "/auth.Auth/GetUser"
 	Auth_DeviceAuthorize_FullMethodName = "/auth.Auth/DeviceAuthorize"
-	Auth_ActivateDevice_FullMethodName  = "/auth.Auth/ActivateDevice"
 	Auth_PollToken_FullMethodName       = "/auth.Auth/PollToken"
 )
 
@@ -31,7 +30,6 @@ const (
 type AuthClient interface {
 	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
 	DeviceAuthorize(ctx context.Context, in *DeviceAuthorizeRequest, opts ...grpc.CallOption) (*DeviceAuthorizeResponse, error)
-	ActivateDevice(ctx context.Context, in *ActivateDeviceRequest, opts ...grpc.CallOption) (*ActivateDeviceResponse, error)
 	PollToken(ctx context.Context, in *PollTokenRequest, opts ...grpc.CallOption) (*PollTokenResponse, error)
 }
 
@@ -63,16 +61,6 @@ func (c *authClient) DeviceAuthorize(ctx context.Context, in *DeviceAuthorizeReq
 	return out, nil
 }
 
-func (c *authClient) ActivateDevice(ctx context.Context, in *ActivateDeviceRequest, opts ...grpc.CallOption) (*ActivateDeviceResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ActivateDeviceResponse)
-	err := c.cc.Invoke(ctx, Auth_ActivateDevice_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *authClient) PollToken(ctx context.Context, in *PollTokenRequest, opts ...grpc.CallOption) (*PollTokenResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(PollTokenResponse)
@@ -89,7 +77,6 @@ func (c *authClient) PollToken(ctx context.Context, in *PollTokenRequest, opts .
 type AuthServer interface {
 	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
 	DeviceAuthorize(context.Context, *DeviceAuthorizeRequest) (*DeviceAuthorizeResponse, error)
-	ActivateDevice(context.Context, *ActivateDeviceRequest) (*ActivateDeviceResponse, error)
 	PollToken(context.Context, *PollTokenRequest) (*PollTokenResponse, error)
 	mustEmbedUnimplementedAuthServer()
 }
@@ -106,9 +93,6 @@ func (UnimplementedAuthServer) GetUser(context.Context, *GetUserRequest) (*GetUs
 }
 func (UnimplementedAuthServer) DeviceAuthorize(context.Context, *DeviceAuthorizeRequest) (*DeviceAuthorizeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeviceAuthorize not implemented")
-}
-func (UnimplementedAuthServer) ActivateDevice(context.Context, *ActivateDeviceRequest) (*ActivateDeviceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ActivateDevice not implemented")
 }
 func (UnimplementedAuthServer) PollToken(context.Context, *PollTokenRequest) (*PollTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PollToken not implemented")
@@ -170,24 +154,6 @@ func _Auth_DeviceAuthorize_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Auth_ActivateDevice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ActivateDeviceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServer).ActivateDevice(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Auth_ActivateDevice_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServer).ActivateDevice(ctx, req.(*ActivateDeviceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Auth_PollToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PollTokenRequest)
 	if err := dec(in); err != nil {
@@ -220,10 +186,6 @@ var Auth_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeviceAuthorize",
 			Handler:    _Auth_DeviceAuthorize_Handler,
-		},
-		{
-			MethodName: "ActivateDevice",
-			Handler:    _Auth_ActivateDevice_Handler,
 		},
 		{
 			MethodName: "PollToken",

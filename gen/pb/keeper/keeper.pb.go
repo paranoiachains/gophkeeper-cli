@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v6.30.2
-// source: api/proto/users.proto
+// source: api/proto/keeper.proto
 
-package users
+package keeper
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -31,7 +31,7 @@ type RegisterRequest struct {
 
 func (x *RegisterRequest) Reset() {
 	*x = RegisterRequest{}
-	mi := &file_api_proto_users_proto_msgTypes[0]
+	mi := &file_api_proto_keeper_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -43,7 +43,7 @@ func (x *RegisterRequest) String() string {
 func (*RegisterRequest) ProtoMessage() {}
 
 func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_users_proto_msgTypes[0]
+	mi := &file_api_proto_keeper_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,7 +56,7 @@ func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterRequest.ProtoReflect.Descriptor instead.
 func (*RegisterRequest) Descriptor() ([]byte, []int) {
-	return file_api_proto_users_proto_rawDescGZIP(), []int{0}
+	return file_api_proto_keeper_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *RegisterRequest) GetLogin() string {
@@ -82,7 +82,7 @@ type RegisterResponse struct {
 
 func (x *RegisterResponse) Reset() {
 	*x = RegisterResponse{}
-	mi := &file_api_proto_users_proto_msgTypes[1]
+	mi := &file_api_proto_keeper_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -94,7 +94,7 @@ func (x *RegisterResponse) String() string {
 func (*RegisterResponse) ProtoMessage() {}
 
 func (x *RegisterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_users_proto_msgTypes[1]
+	mi := &file_api_proto_keeper_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -107,7 +107,7 @@ func (x *RegisterResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterResponse.ProtoReflect.Descriptor instead.
 func (*RegisterResponse) Descriptor() ([]byte, []int) {
-	return file_api_proto_users_proto_rawDescGZIP(), []int{1}
+	return file_api_proto_keeper_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *RegisterResponse) GetToken() string {
@@ -127,7 +127,7 @@ type LoginRequest struct {
 
 func (x *LoginRequest) Reset() {
 	*x = LoginRequest{}
-	mi := &file_api_proto_users_proto_msgTypes[2]
+	mi := &file_api_proto_keeper_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -139,7 +139,7 @@ func (x *LoginRequest) String() string {
 func (*LoginRequest) ProtoMessage() {}
 
 func (x *LoginRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_users_proto_msgTypes[2]
+	mi := &file_api_proto_keeper_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -152,7 +152,7 @@ func (x *LoginRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginRequest.ProtoReflect.Descriptor instead.
 func (*LoginRequest) Descriptor() ([]byte, []int) {
-	return file_api_proto_users_proto_rawDescGZIP(), []int{2}
+	return file_api_proto_keeper_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *LoginRequest) GetLogin() string {
@@ -178,7 +178,7 @@ type LoginResponse struct {
 
 func (x *LoginResponse) Reset() {
 	*x = LoginResponse{}
-	mi := &file_api_proto_users_proto_msgTypes[3]
+	mi := &file_api_proto_keeper_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -190,7 +190,7 @@ func (x *LoginResponse) String() string {
 func (*LoginResponse) ProtoMessage() {}
 
 func (x *LoginResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_users_proto_msgTypes[3]
+	mi := &file_api_proto_keeper_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -203,7 +203,7 @@ func (x *LoginResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginResponse.ProtoReflect.Descriptor instead.
 func (*LoginResponse) Descriptor() ([]byte, []int) {
-	return file_api_proto_users_proto_rawDescGZIP(), []int{3}
+	return file_api_proto_keeper_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *LoginResponse) GetToken() string {
@@ -213,11 +213,11 @@ func (x *LoginResponse) GetToken() string {
 	return ""
 }
 
-var File_api_proto_users_proto protoreflect.FileDescriptor
+var File_api_proto_keeper_proto protoreflect.FileDescriptor
 
-const file_api_proto_users_proto_rawDesc = "" +
+const file_api_proto_keeper_proto_rawDesc = "" +
 	"\n" +
-	"\x15api/proto/users.proto\x12\x06gen.pb\"C\n" +
+	"\x16api/proto/keeper.proto\x12\x06gen.pb\"C\n" +
 	"\x0fRegisterRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"(\n" +
@@ -227,35 +227,35 @@ const file_api_proto_users_proto_rawDesc = "" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"%\n" +
 	"\rLoginResponse\x12\x14\n" +
-	"\x05token\x18\x02 \x01(\tR\x05token2|\n" +
-	"\x05Users\x12=\n" +
+	"\x05token\x18\x02 \x01(\tR\x05token2}\n" +
+	"\x06Keeper\x12=\n" +
 	"\bRegister\x12\x17.gen.pb.RegisterRequest\x1a\x18.gen.pb.RegisterResponse\x124\n" +
-	"\x05Login\x12\x14.gen.pb.LoginRequest\x1a\x15.gen.pb.LoginResponseB3Z1github.com/paranoiachains/gophkeeper/gen/pb/usersb\x06proto3"
+	"\x05Login\x12\x14.gen.pb.LoginRequest\x1a\x15.gen.pb.LoginResponseB4Z2github.com/paranoiachains/gophkeeper/gen/pb/keeperb\x06proto3"
 
 var (
-	file_api_proto_users_proto_rawDescOnce sync.Once
-	file_api_proto_users_proto_rawDescData []byte
+	file_api_proto_keeper_proto_rawDescOnce sync.Once
+	file_api_proto_keeper_proto_rawDescData []byte
 )
 
-func file_api_proto_users_proto_rawDescGZIP() []byte {
-	file_api_proto_users_proto_rawDescOnce.Do(func() {
-		file_api_proto_users_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_api_proto_users_proto_rawDesc), len(file_api_proto_users_proto_rawDesc)))
+func file_api_proto_keeper_proto_rawDescGZIP() []byte {
+	file_api_proto_keeper_proto_rawDescOnce.Do(func() {
+		file_api_proto_keeper_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_api_proto_keeper_proto_rawDesc), len(file_api_proto_keeper_proto_rawDesc)))
 	})
-	return file_api_proto_users_proto_rawDescData
+	return file_api_proto_keeper_proto_rawDescData
 }
 
-var file_api_proto_users_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
-var file_api_proto_users_proto_goTypes = []any{
+var file_api_proto_keeper_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_api_proto_keeper_proto_goTypes = []any{
 	(*RegisterRequest)(nil),  // 0: gen.pb.RegisterRequest
 	(*RegisterResponse)(nil), // 1: gen.pb.RegisterResponse
 	(*LoginRequest)(nil),     // 2: gen.pb.LoginRequest
 	(*LoginResponse)(nil),    // 3: gen.pb.LoginResponse
 }
-var file_api_proto_users_proto_depIdxs = []int32{
-	0, // 0: gen.pb.Users.Register:input_type -> gen.pb.RegisterRequest
-	2, // 1: gen.pb.Users.Login:input_type -> gen.pb.LoginRequest
-	1, // 2: gen.pb.Users.Register:output_type -> gen.pb.RegisterResponse
-	3, // 3: gen.pb.Users.Login:output_type -> gen.pb.LoginResponse
+var file_api_proto_keeper_proto_depIdxs = []int32{
+	0, // 0: gen.pb.Keeper.Register:input_type -> gen.pb.RegisterRequest
+	2, // 1: gen.pb.Keeper.Login:input_type -> gen.pb.LoginRequest
+	1, // 2: gen.pb.Keeper.Register:output_type -> gen.pb.RegisterResponse
+	3, // 3: gen.pb.Keeper.Login:output_type -> gen.pb.LoginResponse
 	2, // [2:4] is the sub-list for method output_type
 	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -263,26 +263,26 @@ var file_api_proto_users_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_api_proto_users_proto_init() }
-func file_api_proto_users_proto_init() {
-	if File_api_proto_users_proto != nil {
+func init() { file_api_proto_keeper_proto_init() }
+func file_api_proto_keeper_proto_init() {
+	if File_api_proto_keeper_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_proto_users_proto_rawDesc), len(file_api_proto_users_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_proto_keeper_proto_rawDesc), len(file_api_proto_keeper_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_api_proto_users_proto_goTypes,
-		DependencyIndexes: file_api_proto_users_proto_depIdxs,
-		MessageInfos:      file_api_proto_users_proto_msgTypes,
+		GoTypes:           file_api_proto_keeper_proto_goTypes,
+		DependencyIndexes: file_api_proto_keeper_proto_depIdxs,
+		MessageInfos:      file_api_proto_keeper_proto_msgTypes,
 	}.Build()
-	File_api_proto_users_proto = out.File
-	file_api_proto_users_proto_goTypes = nil
-	file_api_proto_users_proto_depIdxs = nil
+	File_api_proto_keeper_proto = out.File
+	file_api_proto_keeper_proto_goTypes = nil
+	file_api_proto_keeper_proto_depIdxs = nil
 }

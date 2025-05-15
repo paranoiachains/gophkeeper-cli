@@ -172,7 +172,6 @@ func (x *GetUserResponse) GetUser() *User {
 type DeviceAuthorizeRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -210,13 +209,6 @@ func (*DeviceAuthorizeRequest) Descriptor() ([]byte, []int) {
 func (x *DeviceAuthorizeRequest) GetLogin() string {
 	if x != nil {
 		return x.Login
-	}
-	return ""
-}
-
-func (x *DeviceAuthorizeRequest) GetPassword() string {
-	if x != nil {
-		return x.Password
 	}
 	return ""
 }
@@ -281,86 +273,6 @@ func (x *DeviceAuthorizeResponse) GetExpiresIn() int64 {
 	return 0
 }
 
-type ActivateDeviceRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserCode      string                 `protobuf:"bytes,1,opt,name=user_code,json=userCode,proto3" json:"user_code,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ActivateDeviceRequest) Reset() {
-	*x = ActivateDeviceRequest{}
-	mi := &file_api_proto_auth_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ActivateDeviceRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ActivateDeviceRequest) ProtoMessage() {}
-
-func (x *ActivateDeviceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_auth_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ActivateDeviceRequest.ProtoReflect.Descriptor instead.
-func (*ActivateDeviceRequest) Descriptor() ([]byte, []int) {
-	return file_api_proto_auth_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *ActivateDeviceRequest) GetUserCode() string {
-	if x != nil {
-		return x.UserCode
-	}
-	return ""
-}
-
-type ActivateDeviceResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ActivateDeviceResponse) Reset() {
-	*x = ActivateDeviceResponse{}
-	mi := &file_api_proto_auth_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ActivateDeviceResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ActivateDeviceResponse) ProtoMessage() {}
-
-func (x *ActivateDeviceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_auth_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ActivateDeviceResponse.ProtoReflect.Descriptor instead.
-func (*ActivateDeviceResponse) Descriptor() ([]byte, []int) {
-	return file_api_proto_auth_proto_rawDescGZIP(), []int{6}
-}
-
 type PollTokenRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	DeviceCode    string                 `protobuf:"bytes,1,opt,name=device_code,json=deviceCode,proto3" json:"device_code,omitempty"`
@@ -370,7 +282,7 @@ type PollTokenRequest struct {
 
 func (x *PollTokenRequest) Reset() {
 	*x = PollTokenRequest{}
-	mi := &file_api_proto_auth_proto_msgTypes[7]
+	mi := &file_api_proto_auth_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -382,7 +294,7 @@ func (x *PollTokenRequest) String() string {
 func (*PollTokenRequest) ProtoMessage() {}
 
 func (x *PollTokenRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_auth_proto_msgTypes[7]
+	mi := &file_api_proto_auth_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -395,7 +307,7 @@ func (x *PollTokenRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PollTokenRequest.ProtoReflect.Descriptor instead.
 func (*PollTokenRequest) Descriptor() ([]byte, []int) {
-	return file_api_proto_auth_proto_rawDescGZIP(), []int{7}
+	return file_api_proto_auth_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *PollTokenRequest) GetDeviceCode() string {
@@ -414,7 +326,7 @@ type PollTokenResponse struct {
 
 func (x *PollTokenResponse) Reset() {
 	*x = PollTokenResponse{}
-	mi := &file_api_proto_auth_proto_msgTypes[8]
+	mi := &file_api_proto_auth_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -426,7 +338,7 @@ func (x *PollTokenResponse) String() string {
 func (*PollTokenResponse) ProtoMessage() {}
 
 func (x *PollTokenResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_auth_proto_msgTypes[8]
+	mi := &file_api_proto_auth_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -439,7 +351,7 @@ func (x *PollTokenResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PollTokenResponse.ProtoReflect.Descriptor instead.
 func (*PollTokenResponse) Descriptor() ([]byte, []int) {
-	return file_api_proto_auth_proto_rawDescGZIP(), []int{8}
+	return file_api_proto_auth_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *PollTokenResponse) GetToken() string {
@@ -462,28 +374,23 @@ const file_api_proto_auth_proto_rawDesc = "" +
 	"\x05login\x18\x01 \x01(\tR\x05login\"1\n" +
 	"\x0fGetUserResponse\x12\x1e\n" +
 	"\x04user\x18\x01 \x01(\v2\n" +
-	".auth.UserR\x04user\"J\n" +
+	".auth.UserR\x04user\".\n" +
 	"\x16DeviceAuthorizeRequest\x12\x14\n" +
-	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"v\n" +
+	"\x05login\x18\x01 \x01(\tR\x05login\"v\n" +
 	"\x17DeviceAuthorizeResponse\x12\x1f\n" +
 	"\vdevice_code\x18\x01 \x01(\tR\n" +
 	"deviceCode\x12\x1b\n" +
 	"\tuser_code\x18\x02 \x01(\tR\buserCode\x12\x1d\n" +
 	"\n" +
-	"expires_in\x18\x03 \x01(\x03R\texpiresIn\"4\n" +
-	"\x15ActivateDeviceRequest\x12\x1b\n" +
-	"\tuser_code\x18\x01 \x01(\tR\buserCode\"\x18\n" +
-	"\x16ActivateDeviceResponse\"3\n" +
+	"expires_in\x18\x03 \x01(\x03R\texpiresIn\"3\n" +
 	"\x10PollTokenRequest\x12\x1f\n" +
 	"\vdevice_code\x18\x01 \x01(\tR\n" +
 	"deviceCode\")\n" +
 	"\x11PollTokenResponse\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05token2\x99\x02\n" +
+	"\x05token\x18\x01 \x01(\tR\x05token2\xcc\x01\n" +
 	"\x04Auth\x126\n" +
 	"\aGetUser\x12\x14.auth.GetUserRequest\x1a\x15.auth.GetUserResponse\x12N\n" +
-	"\x0fDeviceAuthorize\x12\x1c.auth.DeviceAuthorizeRequest\x1a\x1d.auth.DeviceAuthorizeResponse\x12K\n" +
-	"\x0eActivateDevice\x12\x1b.auth.ActivateDeviceRequest\x1a\x1c.auth.ActivateDeviceResponse\x12<\n" +
+	"\x0fDeviceAuthorize\x12\x1c.auth.DeviceAuthorizeRequest\x1a\x1d.auth.DeviceAuthorizeResponse\x12<\n" +
 	"\tPollToken\x12\x16.auth.PollTokenRequest\x1a\x17.auth.PollTokenResponseB2Z0github.com/paranoiachains/gophkeeper/gen/pb/authb\x06proto3"
 
 var (
@@ -498,30 +405,26 @@ func file_api_proto_auth_proto_rawDescGZIP() []byte {
 	return file_api_proto_auth_proto_rawDescData
 }
 
-var file_api_proto_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_api_proto_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_api_proto_auth_proto_goTypes = []any{
 	(*User)(nil),                    // 0: auth.User
 	(*GetUserRequest)(nil),          // 1: auth.GetUserRequest
 	(*GetUserResponse)(nil),         // 2: auth.GetUserResponse
 	(*DeviceAuthorizeRequest)(nil),  // 3: auth.DeviceAuthorizeRequest
 	(*DeviceAuthorizeResponse)(nil), // 4: auth.DeviceAuthorizeResponse
-	(*ActivateDeviceRequest)(nil),   // 5: auth.ActivateDeviceRequest
-	(*ActivateDeviceResponse)(nil),  // 6: auth.ActivateDeviceResponse
-	(*PollTokenRequest)(nil),        // 7: auth.PollTokenRequest
-	(*PollTokenResponse)(nil),       // 8: auth.PollTokenResponse
+	(*PollTokenRequest)(nil),        // 5: auth.PollTokenRequest
+	(*PollTokenResponse)(nil),       // 6: auth.PollTokenResponse
 }
 var file_api_proto_auth_proto_depIdxs = []int32{
 	0, // 0: auth.GetUserResponse.user:type_name -> auth.User
 	1, // 1: auth.Auth.GetUser:input_type -> auth.GetUserRequest
 	3, // 2: auth.Auth.DeviceAuthorize:input_type -> auth.DeviceAuthorizeRequest
-	5, // 3: auth.Auth.ActivateDevice:input_type -> auth.ActivateDeviceRequest
-	7, // 4: auth.Auth.PollToken:input_type -> auth.PollTokenRequest
-	2, // 5: auth.Auth.GetUser:output_type -> auth.GetUserResponse
-	4, // 6: auth.Auth.DeviceAuthorize:output_type -> auth.DeviceAuthorizeResponse
-	6, // 7: auth.Auth.ActivateDevice:output_type -> auth.ActivateDeviceResponse
-	8, // 8: auth.Auth.PollToken:output_type -> auth.PollTokenResponse
-	5, // [5:9] is the sub-list for method output_type
-	1, // [1:5] is the sub-list for method input_type
+	5, // 3: auth.Auth.PollToken:input_type -> auth.PollTokenRequest
+	2, // 4: auth.Auth.GetUser:output_type -> auth.GetUserResponse
+	4, // 5: auth.Auth.DeviceAuthorize:output_type -> auth.DeviceAuthorizeResponse
+	6, // 6: auth.Auth.PollToken:output_type -> auth.PollTokenResponse
+	4, // [4:7] is the sub-list for method output_type
+	1, // [1:4] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
@@ -538,7 +441,7 @@ func file_api_proto_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_proto_auth_proto_rawDesc), len(file_api_proto_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

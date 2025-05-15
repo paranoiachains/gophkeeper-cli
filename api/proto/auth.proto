@@ -7,7 +7,6 @@ option go_package = "github.com/paranoiachains/gophkeeper/gen/pb/auth";
 service Auth {
     rpc GetUser(GetUserRequest) returns (GetUserResponse);
     rpc DeviceAuthorize(DeviceAuthorizeRequest) returns (DeviceAuthorizeResponse);
-    rpc ActivateDevice(ActivateDeviceRequest) returns (ActivateDeviceResponse);
     rpc PollToken(PollTokenRequest) returns (PollTokenResponse);
 }
 
@@ -17,7 +16,7 @@ message User {
     string password = 3;
 }
 
-  message GetUserRequest {
+message GetUserRequest {
     string login = 1;
 }   
 
@@ -27,21 +26,12 @@ message GetUserResponse {
   
 message DeviceAuthorizeRequest {
     string login = 1;
-    string password = 2;
 }
   
-  message DeviceAuthorizeResponse {
+message DeviceAuthorizeResponse {
     string device_code = 1;
     string user_code = 2;
     int64 expires_in = 3;
-}
-  
-message ActivateDeviceRequest {
-    string user_code = 1;
-}
-  
-message ActivateDeviceResponse {
-
 }
   
 message PollTokenRequest {
