@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-var ErrAuthorizationPending = errors.New("expired authorization")
+var ErrAuthorizationPending = errors.New("pending authorization")
 
 // Implementations of Users interface
 type Users struct {
